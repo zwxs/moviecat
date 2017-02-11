@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+    function bb(data) {
+        console.log(data);
+    }
+    </script>
+    <!--1. 跨域请求API的原理 1.创建一个script标签 src指向一个跨域请求的API的地址https://api.douban.com/v2/movie/in_theaters?callback=fun
+    2.相当于会把请求成功的代码 fun({属性:值});  fun({
+        'name': 'zhangsan'
+    });
+    3.在页面上定义一个fun函数 里面写一个参数data来获取调用的数据 -->
+    <script>
+    // fun({
+    //     'name': 'zhangsan'
+    // });
+    </script>
+    <script>
+    bb({
+        count: 20,
+        start: 0,
+        total: 19
+    })
+    </script>
+</body>
+
+</html>

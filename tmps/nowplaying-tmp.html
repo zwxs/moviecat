@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div class="list">
+        <ul>
+            <!-- movie.subjects 数组是所有的电影列表 -->
+            <!-- value是每一个电影 -->
+            <li ng-repeat="value in movie.subjects" >
+                <a href="#/details">
+                    <!-- ng-src就相当于ng-bind绑定angular的属性到标签上 这样写就不会报错 -->
+                    <!-- ng-src里面的属性要带大括号  这个(特殊要写)-->
+                    <img alt="" ng-src="{{value.images.large}}">
+                </a>
+                <div class="meta">
+                    <h4><span ng-bind="value.title"></span> <em ng-bind="value.rating.average"></em></h4>
+                    <div class="otherinfo">类型:
+                       <span ng-repeat="juqing in value.genres" ng-bind="juqing"></span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
