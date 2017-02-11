@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    function jsonp(url, params, fun) {
+        url += '?';
+        for (var key in params) {
+            url += key + '=' + params[key] + '&';
+        }
+        url += 'callback=aa';
+
+        var script = document.createElement('script');
+        script.src = url;
+        document.body.appendChild(script)
+        window.aa = function(data) {
+            fun(data)
+        }
+    }
+    jsonp('https://api.douban.com/v2/movie/in_theaters', {
+        count: 5,
+        start: 0
+    }, function(data) {
+        console.log(data);
+    })
+    </script>
+</body>
+
+</html>
