@@ -1,9 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-    这是top250页面
-    </body>
-</html>
+ <div class="list">
+        <ul>
+            <!-- movie.subjects 数组是所有的电影列表 -->
+            <!-- value是每一个电影 -->
+            <li ng-repeat="value in movie.subjects">
+                <a href="#/details/{{value.id}}">
+                    <!-- ng-src就相当于ng-bind绑定angular的属性到标签上 这样写就不会报错 -->
+                    <!-- ng-src里面的属性要带大括号  这个(特殊要写)-->
+                    <img alt="" ng-src="{{value.images.large}}">
+                </a>
+                <div class="meta">
+                    <h4><span ng-bind="value.title"></span> <em ng-bind="value.rating.average"></em></h4>
+                    <div class="otherinfo">类型:
+                        <span ng-repeat="juqing in value.genres" ng-bind="juqing"></span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="paging">
+            <label ng-cloak>总共：{{total}}条记录,第{{pageid}}/{{pageCount}}页;</label>
+            <!-- 加上disable类样式，表示按钮禁用状态 -->
+            <a class="prev" ng-class="{'disable':pageid == 1}" href="#/top250/1">首页</a>
+            <a class="prev" ng-class="{'disable':pageid == 1}" href="#/top250/{{prevPage}}">上一页</a>
+            <a class="next" ng-class="{'disable':pageid == pageCount}" href="#/top250/{{nextPage}}">下一页</a>
+            <a class="next" ng-class="{'disable':pageid == pageCount}" href="#/top250/{{pageCount}}">尾页</a>
+        </div>
+    </div>
+    <div class="mask" ng-hide="isLoading">
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>

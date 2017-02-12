@@ -1,17 +1,17 @@
-// 11.创建 正在热映的控制器的模块 并且创建一个正在热映控制器
-angular.module('movieApp.top250Ctrl', [])
-    .controller('top250Ctrl', ['$scope', '$movieServ', '$routeParams', function($scope, $movieServ, $routeParams) {
+angular.module('movieApp.searchCtrl', [])
+    .controller('searchCtrl', ['$scope', '$movieServ', '$routeParams', function($scope, $movieServ, $routeParams) {
         $scope.isLoading = false;
+        $scope.name = $routeParams.name || '周星驰';
         $scope.pageid = $routeParams.pageid || 1;
         //1. 实现电影列表的展示功能
         // 1.创建一个电影列表的属性
         $scope.movie = {};
         var start = ($scope.pageid - 1) * 5;
         // 2.通过ajax请求data.json文件 获取数据赋值给movie属性中
-        $movieServ.jsonp('https://api.douban.com/v2/movie/top250', { count: 5, start: start },
+        $movieServ.jsonp('https://api.douban.com/v2/movie/search', { q: $scope.name, count: 5, start: start },
             function(data) {
                 $scope.movie = data;
-                // console.log(data);
+                console.log(data);
                 $scope.total = data.total;
                 $scope.pageCount = Math.ceil(data.total / 5);
 
@@ -28,4 +28,4 @@ angular.module('movieApp.top250Ctrl', [])
 
 
             });
-    }]);
+    }])

@@ -160,7 +160,10 @@ body {
 .container .list .paging {
     text-align: center;
 }
-
+.container .list .paging a{
+    display: inline-block;
+    line-height: 40px;
+}
 .container .list .paging .prev,
 .container .list .paging .next {
     border: none;
@@ -705,7 +708,7 @@ body {
 .container3 > div {
     width: 20px;
     height: 20px;
-    background-color: #333;
+    background-color: #fff;
     border-radius: 100%;
     position: absolute;
     -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
@@ -838,4 +841,7 @@ body {
     top: 0;
     z-index: 111;
     margin-top: 100px;    
+}
+[ng-cloak]{
+    display: none;
 }
